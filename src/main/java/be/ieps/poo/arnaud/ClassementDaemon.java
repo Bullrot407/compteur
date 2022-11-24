@@ -34,18 +34,23 @@ public class ClassementDaemon extends Thread {
         System.out.println("\n**********************************************");
     }
 
-    public void controleStatutThreadTousFalse() {
+    public void controleStatutThreadTousFalse() throws InterruptedException {
         //verifie que tous les Thread's soient FALSE
         for (int i = 1; i <= contJeu.nbJoueur; i++) {
-            while (contJeu.getListeJoueurs().get("Joueur " + String.valueOf(i)).getStatutThread() == true) {
+            while (contJeu.getListeJoueurs().get("Joueur " + i).getStatutThread() == true) {
             }
         }
+        sleep(1000);
         classement();
 
     }
 
     @Override
     public void run() {
-        controleStatutThreadTousFalse();
+        try {
+            controleStatutThreadTousFalse();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

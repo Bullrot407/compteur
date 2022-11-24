@@ -48,13 +48,16 @@ public class Joueur extends Thread {
         return attente;
     }
 
-    public Joueur(String prenom, int nbTour, long tempsTotal, Boolean statutThread, long attente, ControllerJeu contJeu) {
+
+
+
+    public Joueur(String prenom, ControllerJeu contJeu) {
 
         this.prenom = prenom;
-        this.nbTour = nbTour;
-        this.tempsTotal = tempsTotal;
-        this.statutThread = statutThread;
-        this.attente = attente;
+        this.nbTour = 0;
+        this.tempsTotal = 0;
+        this.statutThread = true;
+        this.attente = 0;
         this.contJeu = contJeu;
     }
 
